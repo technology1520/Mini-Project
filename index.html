@@ -1,0 +1,38 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Mobile Phone Comparison</title>
+</head>
+<body>
+  <div class="comparison-container">
+    <div class="product-card" id="product1">
+      <h2>Mobile Phone 1</h2>
+      <img src="phone1.jpg" alt="Mobile Phone 1">
+      <label for="brand1"><br />Brand:</label>
+      <select id="brand1" class="feature-dropdown"></select>
+      <label for="model1">Model:</label>
+      <select id="model1" class="feature-dropdown"></select>
+    </div>
+
+    <div class="product-card" id="product2">
+      <h2>Mobile Phone 2</h2>
+      <img src="phone2.jpg" alt="Mobile Phone 2">
+      <label for="brand2"><br />Brand:</label>
+      <select id="brand2" class="feature-dropdown"></select>
+      <label for="model2">Model:</label>
+      <select id="model2" class="feature-dropdown"></select>
+    </div>
+  </div>
+
+  <button onclick="compare()">Compare</button>
+
+  <div id="comparison-result"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

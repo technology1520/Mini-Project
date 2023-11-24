@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #productDetails {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="productDetails">
+        <h1>Product Details</h1>
+        <div id="loading">Loading...</div>
+        <div id="dataContainer" style="display: none;">
+            <!-- Product details will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const apiUrl = 'http://localhost:8080/product/apple/15';
+            const loadingDiv = document.getElementById('loading');
+            const dataContainer = document.getElementById('dataContainer');
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    loadingDiv.style.display = 'none';
+                    dataContainer.style.display = 'block';
+
+                    // Format and display the product details
+                    dataContainer.innerHTML = `
+                        <p><strong>ID:</strong> ${data.id}</p>
+                        <p><strong>Brand:</strong> ${data.brand}</p>
+                        <p><strong>Model:</strong> ${data.model}</p>
+                        <p><strong>Name:</strong> ${data.name}</p>
+                        <p><strong>Color:</strong> ${data.color}</p>
+                        <p><strong>Size:</strong> ${data.size}</p>
+                        <p><strong>Processor:</strong> ${data.processor}</p>
+                        <p><strong>Front Camera:</strong> ${data.frontMp}</p>
+                        <p><strong>Back Camera:</strong> ${data.backMp}</p>
+                        <p><strong>RAM:</strong> ${data.ram}</p>
+                        <p><strong>Storage:</strong> ${data.storage}</p>
+                        <p><strong>Made In:</strong> ${data.madeIn}</p>
+                        <p><strong>Image Location:</strong> ${data.ImageLoc}</p>
+                    `;
+                })
+                .catch(error => {
+                    loadingDiv.innerHTML = 'Error loading data.';
+                    console.error('Error fetching data:', error);
+                });
+        });
+    </script>
+
+</body>
+</html>
